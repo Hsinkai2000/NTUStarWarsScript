@@ -12,18 +12,19 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get("https://wish.wis.ntu.edu.sg/pls/webexe/ldap_login.login?w_url=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_planner.main")
 
 uid = driver.find_element(By.ID,"UID")
-uid.send_keys("USERNAME")
+uid.send_keys("USERNAME") #SET USERNAME HERE
 
 btn = driver.find_element(By.XPATH, "/html/body/div[3]/div/div/section[2]/div/div/center[1]/form/table/tbody/tr/td/table/tbody/tr[4]/td[2]/input[1]")
 btn.click()
 
 password = driver.find_element(By.XPATH, "/html/body/div[3]/div/div/section[2]/div/div/form/center[1]/table/tbody/tr/td/table/tbody/tr[3]/td[2]/input")
-password.send_keys("PASSWORD")
+password.send_keys("PASSWORD")  #SET PASSWORD HERE
 
 btn = driver.find_element(By.XPATH, "/html/body/div[3]/div/div/section[2]/div/div/form/center[1]/table/tbody/tr/td/table/tbody/tr[5]/td[2]/input[1]")
 btn.click()
 
 while(True):        
+    #GET XPATH OF MOD DROPDOWN
     labselect = Select(driver.find_element(By.XPATH, "/html/body/form[2]/div/div[3]/div/div/section[2]/div/div/p/table/tbody/tr[1]/td[2]/table/tbody/tr[4]/td[2]/select"))
     options = labselect.options
     for index in range (1, len(options) -1):
@@ -34,6 +35,7 @@ while(True):
         # driver.find_element(By.XPATH, "").click() find and click the final register button
         driver.back()
         
+    #GET XPATH OF MOD DROPDOWN
     classselect = Select(driver.find_element(By.XPATH,"/html/body/form[2]/div/div[3]/div/div/section[2]/div/div/p/table/tbody/tr[1]/td[2]/table/tbody/tr[5]/td[2]/select"))
     classoptions = classselect.options
 

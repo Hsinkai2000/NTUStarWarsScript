@@ -1,0 +1,47 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+
+chrome_options = Options() 
+chrome_options.add_experimental_option("detach", True)
+
+driver = webdriver.Chrome(options=chrome_options)
+
+driver.get("https://wish.wis.ntu.edu.sg/pls/webexe/ldap_login.login?w_url=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_planner.main")
+
+uid = driver.find_element(By.ID,"UID")
+uid.send_keys("USERNAME")
+
+btn = driver.find_element(By.XPATH, "/html/body/div[3]/div/div/section[2]/div/div/center[1]/form/table/tbody/tr/td/table/tbody/tr[4]/td[2]/input[1]")
+btn.click()
+
+password = driver.find_element(By.XPATH, "/html/body/div[3]/div/div/section[2]/div/div/form/center[1]/table/tbody/tr/td/table/tbody/tr[3]/td[2]/input")
+password.send_keys("PASSWORD")
+
+btn = driver.find_element(By.XPATH, "/html/body/div[3]/div/div/section[2]/div/div/form/center[1]/table/tbody/tr/td/table/tbody/tr[5]/td[2]/input[1]")
+btn.click()
+
+while(True):        
+    labselect = Select(driver.find_element(By.XPATH, "/html/body/form[2]/div/div[3]/div/div/section[2]/div/div/p/table/tbody/tr[1]/td[2]/table/tbody/tr[4]/td[2]/select"))
+    options = labselect.options
+    for index in range (1, len(options) -1):
+        labselect = Select(driver.find_element(By.XPATH, "/html/body/form[2]/div/div[3]/div/div/section[2]/div/div/p/table/tbody/tr[1]/td[2]/table/tbody/tr[4]/td[2]/select"))
+        options = labselect.options
+        newselect = labselect.select_by_index(index)
+        # driver.find_element(By.XPATH, "/html/body/form[2]/div/div[3]/div/div/section[2]/div/div/p/table/tbody/tr[1]/td[2]/table/tbody/tr[16]/td/form/input[1]").click()
+        # driver.find_element(By.XPATH, "").click() find and click the final register button
+        driver.back()
+        
+    classselect = Select(driver.find_element(By.XPATH,"/html/body/form[2]/div/div[3]/div/div/section[2]/div/div/p/table/tbody/tr[1]/td[2]/table/tbody/tr[5]/td[2]/select"))
+    classoptions = classselect.options
+
+    for index in range (1,len(classoptions)-1):
+        classselect = Select(driver.find_element(By.XPATH,"/html/body/form[2]/div/div[3]/div/div/section[2]/div/div/p/table/tbody/tr[1]/td[2]/table/tbody/tr[5]/td[2]/select"))
+        classoptions = classselect.options
+        newselect = classselect.select_by_index(index)
+        # driver.find_element(By.XPATH, "/html/body/form[2]/div/div[3]/div/div/section[2]/div/div/p/table/tbody/tr[1]/td[2]/table/tbody/tr[16]/td/form/input[1]").click()
+        # driver.find_element(By.XPATH, "").click() find and click the final register button
+        driver.back()
+

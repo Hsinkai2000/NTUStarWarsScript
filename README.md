@@ -30,9 +30,10 @@ This repository contains a Python script built with Selenium that helps students
 
 ## Usage
 
-1. Open the `config.py` file and provide your NTU student credentials along with other preferences such as module codes and registration timing.
-2. Run the `main.py` script using Python: `python main.py`.
-3. Sit back and relax as the script automates the module registration process for you.
+- Use this script responsibly. Do not abuse it or violate any NTU policies.
+- Ensure that you have a stable internet connection while running the script.
+- The script might need adjustments depending on any changes to the NTU module registration system or website structure.
+- It's recommended to test the script with dummy modules first before using it for actual module registration.
 
 ## Contribution
 
